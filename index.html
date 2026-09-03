@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ana Ladeira · Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --verde-sage: #748774;
+  --dourado: #d2a67f;
+  --verde-escuro: #354032;
+  --dourado-claro: #e2c9ab;
+  --cinza: #ededed;
+  --offwhite: #f7f5f2;
+  --texto: #1e1e1c;
+  --texto-suave: #4a4a44;
+  --nav-height: 72px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--offwhite); color: var(--texto); font-weight: 300; line-height: 1.6; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 3rem; background: rgba(247, 245, 242, 0.8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(237, 237, 237, 0.7); opacity: 0; transform: translateY(-18px); pointer-events: none; transition: opacity 0.45s ease-in, transform 0.45s ease-in; }
+nav.nav-visible { opacity: 1; transform: translateY(0); pointer-events: auto; transition: opacity 0.45s ease-out, transform 0.45s ease-out; }
+nav.nav-hidden { opacity: 0; transform: translateY(-18px); pointer-events: none; transition: opacity 0.45s ease-in, transform 0.45s ease-in; }
+.nav-logo-link { display: inline-flex; align-items: center; justify-content: center; height: 32px; transition: opacity 0.2s ease; }
+.nav-logo-link:hover { opacity: 0.8; }
+.nav-logo { height: 32px; width: auto; display: block; }
+.nav-toggle { display: none; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a { font-size: 0.76rem; font-weight: 400; letter-spacing: 0.07em; text-transform: uppercase; color: var(--texto-suave); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--verde-sage); }
+
+/* HERO */
+#hero { min-height: 100vh; display: flex; align-items: flex-end; justify-content: flex-end; padding: 0 3rem 5rem; background: linear-gradient(90deg, rgba(24,29,25,0.36) 0%, rgba(24,29,25,0.22) 35%, rgba(24,29,25,0.08) 100%), url('images/hero.png') center/cover no-repeat; position: relative; overflow: hidden; }
+.hero-forma { position: absolute; top: 0; right: 0; width: 38%; height: 100%; background: linear-gradient(180deg, rgba(116,135,116,0.30), rgba(116,135,116,0.08)); clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%); opacity: 0.28; }
+.hero-linha { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, rgba(210,166,127,0.15), rgba(210,166,127,0.75), rgba(210,166,127,0.15)); opacity: 0.7; }
+.hero-content { width: min(46%, 620px); margin-left: auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.hero-tag { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.9); margin-bottom: 1.5rem; position: relative; z-index: 1; text-shadow: 0 0 18px rgba(0,0,0,0.45); }
+.hero-titulo { font-family: 'Playfair Display', serif; font-size: clamp(3.7rem, 7vw, 6.6rem); font-weight: 400; line-height: 0.96; color: #fffdf9; max-width: 700px; margin-bottom: 2rem; position: relative; z-index: 1; letter-spacing: -0.04em; text-shadow: 0 0 20px rgba(0,0,0,0.35), 0 2px 3px rgba(0,0,0,0.5); }
+.hero-titulo em { font-style: italic; color: #f7e7d4; }
+.hero-desc { max-width: 500px; font-size: 1rem; color: rgba(255,248,242,0.94); line-height: 1.75; position: relative; z-index: 1; margin-bottom: 2.5rem; opacity: 1; text-shadow: 0 0 18px rgba(0,0,0,0.35); }
+.hero-cta { display: inline-block; font-size: 0.8rem; letter-spacing: 0.09em; text-transform: uppercase; color: #fffdf9; text-decoration: none; border-bottom: 1px solid rgba(210,166,127,0.9); padding-bottom: 3px; transition: color 0.2s; position: relative; z-index: 1; text-shadow: 0 0 16px rgba(0,0,0,0.35); }
+.hero-cta:hover { color: var(--dourado-claro); }
+.hero-scroll { position: absolute; bottom: 1.5rem; left: 3rem; z-index: 1; display: flex; align-items: center; gap: 0.7rem; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(247,245,242,0.8); }
+.hero-scroll::before { content: ''; width: 42px; height: 1px; background: rgba(210,166,127,0.8); }
+.hero-scroll::after { content: '↓'; color: var(--dourado-claro); font-size: 1rem; animation: bounce 1.6s ease-in-out infinite; }
+@keyframes bounce { 0%, 100% { transform: translateY(0); opacity: 0.7; } 50% { transform: translateY(6px); opacity: 1; } }
+
+/* SEÇÕES */
+section { padding: 6rem 3rem; }
+.secao-label { font-size: 0.67rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dourado); margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+.secao-label::after { content: ''; flex: 1; height: 1px; background: var(--cinza); max-width: 72px; }
+.secao-intro { max-width: 520px; margin-bottom: 3.5rem; }
+.secao-intro h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.1rem, 3vw, 2.6rem); font-weight: 400; color: var(--verde-escuro); margin-bottom: 0.75rem; line-height: 1.18; letter-spacing: -0.02em; text-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+.secao-intro p { font-size: 0.87rem; color: var(--texto-suave); line-height: 1.7; }
+
+/* ── PROJETOS ACADÊMICOS — carrossel horizontal reutilizável ── */
+#projetos { background: var(--offwhite); }
+.cases-shell { position: relative; }
+.cases-track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(300px, 35vw); gap: 1.25rem; overflow-x: auto; scroll-snap-type: x proximity; scroll-behavior: smooth; padding: 0.5rem 0 1rem; -ms-overflow-style: none; align-items: stretch; }
+.cases-track::-webkit-scrollbar { display: none; }
+.case-card { background: var(--offwhite); cursor: pointer; transition: transform 0.3s ease; overflow: hidden; scroll-snap-align: center; min-height: 100%; box-shadow: 0 0 0 rgba(0,0,0,0); }
+.case-card:hover { box-shadow: 0 10px 24px rgba(53,64,50,0.06); }
+.case-card.aberto { border-color: transparent; }
+.case-header { padding: 2rem; display: flex; flex-direction: column; gap: 0.85rem; }
+.case-thumb { width: 100%; height: 140px; object-fit: cover; object-position: top; display: block; filter: grayscale(20%); }
+.case-sessao { font-size: 0.67rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--dourado); }
+.case-tipo { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--texto-suave); background: var(--cinza); display: inline-block; padding: 0.22rem 0.55rem; }
+.case-nome { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 400; color: var(--verde-escuro); line-height: 1.2; letter-spacing: -0.02em; text-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+.case-sub { font-size: 0.83rem; color: var(--texto-suave); line-height: 1.55; }
+.case-destaque { font-size: 0.77rem; font-weight: 500; color: var(--verde-sage); }
+.case-toggle { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 2rem; border-top: 1px solid var(--cinza); font-size: 0.71rem; color: var(--verde-sage); letter-spacing: 0.06em; font-weight: 500; text-transform: uppercase; }
+.toggle-icone { width: 20px; height: 20px; border: 1px solid var(--dourado); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--dourado); transition: transform 0.3s; flex-shrink: 0; }
+.case-card.aberto .toggle-icone { transform: rotate(45deg); }
+.case-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; background: var(--verde-escuro); }
+.case-body-inner { padding: 2.2rem 2rem; }
+.case-body h3 { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 400; font-style: italic; color: var(--dourado-claro); margin-bottom: 0.55rem; }
+.case-body p { font-size: 0.85rem; line-height: 1.78; color: var(--dourado-claro); opacity: 0.82; margin-bottom: 1.3rem; }
+.case-body ul { list-style: none; margin-bottom: 1.3rem; }
+.case-body ul li { font-size: 0.83rem; color: var(--dourado-claro); opacity: 0.82; padding: 0.28rem 0 0.28rem 1rem; position: relative; line-height: 1.6; }
+.case-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--dourado); }
+.case-resultado { background: rgba(210,166,127,0.12); border-left: 2px solid var(--dourado); padding: 1.1rem 1.3rem; font-size: 0.83rem; color: var(--dourado-claro); line-height: 1.65; }
+.case-resultado strong { display: block; font-size: 0.65rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--dourado); margin-bottom: 0.4rem; font-weight: 500; }
+.case-completo-link { display: inline-flex; align-items: center; gap: 0.55rem; margin-top: 1.5rem; padding: 0.7rem 0.9rem; border: 1px solid rgba(226,201,171,0.42); color: var(--dourado-claro); font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.case-completo-link::after { content: '↗'; font-size: 0.95rem; }
+.case-completo-link:hover { border-color: var(--dourado); background: rgba(210,166,127,0.16); color: #fff5e9; }
+.case-completo-link:focus-visible { outline: 2px solid var(--dourado-claro); outline-offset: 0.2rem; }
+.carousel-controls { display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease; }
+.cases-shell.has-overflow .carousel-controls { opacity: 1; visibility: visible; pointer-events: auto; }
+.carousel-btn { width: 42px; height: 42px; border: 1px solid rgba(53,64,50,0.2); background: rgba(247,245,242,0.9); color: var(--verde-escuro); font-size: 1.3rem; cursor: pointer; transition: background 0.2s, border-color 0.2s, transform 0.2s ease; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.carousel-btn:hover { background: #f0efe9; border-color: rgba(53,64,50,0.45); transform: translateY(-1px); }
+.case-modal { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 2rem; background: rgba(20,27,21,0.58); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.case-modal.aberto { opacity: 1; visibility: visible; pointer-events: auto; }
+.case-modal-dialog { position: relative; display: grid; grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr); width: min(980px, 100%); height: min(720px, calc(100vh - 4rem)); max-height: calc(100vh - 4rem); overflow: hidden; background: transparent; box-shadow: 0 24px 70px rgba(20,27,21,0.3); transform: translateY(28px) scale(0.94); transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.case-modal.aberto .case-modal-dialog { transform: translateY(0) scale(1); }
+.case-modal-media { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center; min-height: 360px; padding: 1rem; background: transparent; overflow: hidden; }
+.case-modal-media img { width: 100%; height: 100%; min-height: 360px; object-fit: contain; object-position: center; display: block; filter: grayscale(15%); }
+.case-modal-content { min-height: 0; overflow-y: auto; padding: 2.5rem 2.75rem 2.75rem; background: var(--offwhite); }
+.case-modal-content::-webkit-scrollbar { width: 8px; }
+.case-modal-content::-webkit-scrollbar-track { background: rgba(53,64,50,0.08); }
+.case-modal-content::-webkit-scrollbar-thumb { background: var(--dourado); }
+.case-modal-close { position: absolute; top: 0.85rem; right: 0.85rem; z-index: 1; width: 2.25rem; height: 2.25rem; border: 1px solid rgba(53,64,50,0.25); background: rgba(247,245,242,0.88); color: var(--verde-escuro); font-size: 1.35rem; line-height: 1; cursor: pointer; }
+.case-modal-close:hover { background: var(--dourado); }
+.case-modal-close:focus-visible { outline: 2px solid var(--dourado); outline-offset: 0.2rem; }
+.case-modal-content .case-header { padding: 0 0 1.5rem; border-bottom: 1px solid var(--cinza); }
+.case-modal-content .case-body { max-height: none; overflow: visible; margin: 1.75rem -2.75rem -2.75rem; padding: 0 2.75rem 2.75rem; background: linear-gradient(145deg, #40503f 0%, #354032 62%, #2c372c 100%); border-top: 1px solid rgba(226,201,171,0.28); box-shadow: inset 0 16px 28px rgba(20,27,21,0.1), 0 -8px 22px rgba(53,64,50,0.08); }
+.case-modal-content .case-body-inner { padding: 2.25rem 1.5rem 0; }
+body.modal-aberta { overflow: hidden; }
+
+/* ── COMUNICAÇÃO — timeline ── */
+#trajetoria { background: var(--verde-escuro); }
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item { display: grid; grid-template-columns: 120px 1px 1fr; gap: 0 2rem; padding: 2.5rem 0; border-bottom: 1px solid rgba(210,166,127,0.15); }
+.timeline-item:last-child { border-bottom: none; }
+.timeline-data { text-align: right; }
+.timeline-data .tl-data { font-size: 0.72rem; color: var(--dourado); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.timeline-data .tl-papel { font-size: 0.68rem; color: var(--verde-sage); letter-spacing: 0.06em; }
+.timeline-linha { width: 1px; background: rgba(210,166,127,0.25); position: relative; }
+.timeline-linha::before { content: ''; width: 7px; height: 7px; background: var(--dourado); border-radius: 50%; position: absolute; top: 0; left: 50%; transform: translateX(-50%); }
+.timeline-conteudo { padding-top: 0; }
+.timeline-conteudo h3 { font-family: 'Playfair Display', serif; font-size: 1.28rem; font-weight: 400; color: var(--offwhite); margin-bottom: 0.5rem; line-height: 1.2; letter-spacing: -0.01em; text-shadow: 0 1px 0 rgba(0,0,0,0.08); }
+.timeline-conteudo p { font-size: 0.84rem; color: var(--dourado-claro); opacity: 0.82; line-height: 1.7; }
+.tl-tag { display: inline-block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--verde-escuro); background: var(--verde-sage); padding: 0.2rem 0.55rem; margin-top: 0.75rem; }
+
+/* ── FOTOGRAFIA — grid editorial ── */
+#fotografia { background: var(--cinza); }
+.foto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #d8d5d0; }
+.foto-item { background: var(--offwhite); overflow: hidden; }
+.foto-item.destaque { grid-column: span 2; }
+.foto-item.autoral { order: -1; }
+.foto-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.4s ease; filter: grayscale(15%); }
+.foto-item.destaque .foto-img { aspect-ratio: 21/9; }
+.foto-item:hover .foto-img { transform: scale(1.02); }
+.foto-legenda { padding: 1.2rem 1.4rem 1.5rem; }
+.foto-legenda .fl-materia { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dourado); margin-bottom: 0.75rem; }
+.foto-legenda h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 400; color: var(--verde-escuro); margin-bottom: 0.3rem; letter-spacing: -0.01em; text-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+.foto-legenda p { font-size: 0.78rem; color: var(--texto-suave); line-height: 1.5; }
+.foto-placeholder { width: 100%; aspect-ratio: 16/9; background: var(--verde-escuro); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; }
+.foto-item.destaque .foto-placeholder { aspect-ratio: 21/9; }
+.foto-placeholder span { font-size: 0.7rem; color: var(--verde-sage); letter-spacing: 0.08em; text-transform: uppercase; }
+.foto-media { position: relative; isolation: isolate; background: transparent; overflow: hidden; }
+.foto-media .foto-img, .foto-media .foto-placeholder { width: 100%; aspect-ratio: 16/9; }
+.foto-item.destaque .foto-media .foto-img, .foto-item.destaque .foto-media .foto-placeholder { aspect-ratio: 21/9; }
+.foto-media .foto-img { max-height: none; object-fit: cover; }
+.foto-media .foto-placeholder { min-height: 260px; }
+.foto-carousel-btn { position: absolute; top: 50%; z-index: 1; width: 2.5rem; height: 2.5rem; border: 1px solid rgba(226,201,171,0.65); background: rgba(30,42,30,0.78); color: var(--dourado-claro); font-size: 1.4rem; cursor: pointer; transform: translateY(-50%); }
+.foto-carousel-btn:hover { background: var(--dourado); color: var(--verde-escuro); }
+.foto-carousel-btn:focus-visible { outline: 1px solid var(--dourado-claro); outline-offset: 0.2rem; }
+.foto-carousel-btn.prev { left: 1.25rem; }
+.foto-carousel-btn.next { right: 1.25rem; }
+.foto-carousel-counter { position: absolute; right: 1rem; bottom: 0.8rem; z-index: 1; padding: 0.2rem 0.45rem; background: rgba(30,42,30,0.78); color: var(--dourado-claro); font-size: 0.68rem; letter-spacing: 0.08em; }
+.foto-media { cursor: zoom-in; }
+.foto-modal { position: fixed; inset: 0; z-index: 210; display: flex; align-items: center; justify-content: center; padding: 2rem; background: rgba(20,27,21,0.72); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.3s ease, visibility 0.3s ease; }
+.foto-modal.aberto { opacity: 1; visibility: visible; pointer-events: auto; }
+.foto-modal-dialog { position: relative; display: flex; align-items: center; justify-content: center; width: min(1100px, 100%); height: min(820px, calc(100vh - 4rem)); padding: 3rem 5rem; background: transparent; box-shadow: 0 24px 70px rgba(20,27,21,0.35); transform: scale(0.94); transition: transform 0.35s ease; }
+.foto-modal.aberto .foto-modal-dialog { transform: scale(1); }
+.foto-modal-image { width: 100%; height: 100%; object-fit: contain; }
+.foto-modal-close { position: absolute; top: 0.85rem; right: 0.85rem; z-index: 1; width: 2.25rem; height: 2.25rem; border: 1px solid rgba(53,64,50,0.25); background: rgba(247,245,242,0.9); color: var(--verde-escuro); font-size: 1.35rem; cursor: pointer; }
+.foto-modal-close:hover { background: var(--dourado); }
+.foto-modal-btn { position: absolute; top: 50%; z-index: 1; width: 2.75rem; height: 2.75rem; border: 1px solid rgba(53,64,50,0.35); background: rgba(247,245,242,0.9); color: var(--verde-escuro); font-size: 1.5rem; cursor: pointer; transform: translateY(-50%); }
+.foto-modal-btn:hover { background: var(--dourado); }
+.foto-modal-btn.prev { left: 1rem; }
+.foto-modal-btn.next { right: 1rem; }
+.foto-modal-counter { position: absolute; bottom: 1rem; left: 50%; padding: 0.25rem 0.5rem; background: rgba(53,64,50,0.82); color: var(--dourado-claro); font-size: 0.7rem; transform: translateX(-50%); }
+
+/* ── CRIAÇÃO DE CONTEÚDO — lista editorial ── */
+#criacao { background: var(--offwhite); }
+.criacao-lista { display: flex; flex-direction: column; gap: 1px; background: var(--cinza); }
+.criacao-item { display: grid; grid-template-columns: minmax(300px, 1.05fr) minmax(0, 1fr); background: var(--offwhite); overflow: hidden; }
+.criacao-item:nth-child(2) { grid-template-columns: minmax(0, 1fr) minmax(300px, 1.05fr); }
+.criacao-thumb { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; align-items: stretch; justify-content: center; padding: 0.35rem; background: var(--verde-escuro); overflow: hidden; }
+.criacao-item:nth-child(2) .criacao-thumb { grid-column: 2; }
+.criacao-thumb video { width: 100%; max-height: 380px; aspect-ratio: 16/9; object-fit: contain; display: block; background: #1e2a1e; }
+.video-carousel { position: relative; width: 100%; }
+.criacao-thumb .video-slide { display: none; }
+.criacao-thumb .video-slide.ativo { display: block; }
+.video-carousel-nav { display: flex; align-items: center; justify-content: center; gap: 0.55rem; margin-top: 0.55rem; }
+.video-carousel-nav button { width: 1.8rem; height: 1.8rem; border: 1px solid rgba(226,201,171,0.45); background: transparent; color: var(--dourado-claro); cursor: pointer; }
+.video-carousel-nav button:hover { background: var(--dourado); color: var(--verde-escuro); }
+.video-carousel-count { color: var(--dourado-claro); font-size: 0.68rem; letter-spacing: 0.08em; }
+.criacao-thumb-placeholder { width: 100%; height: 100%; min-height: 160px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.4rem; }
+.criacao-thumb-placeholder span { font-size: 0.65rem; color: var(--verde-sage); letter-spacing: 0.07em; text-transform: uppercase; }
+.criacao-texto { grid-column: 2; grid-row: 1; padding: 1.8rem 2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem; }
+.criacao-item:nth-child(2) .criacao-texto { grid-column: 1; }
+.criacao-tipo { font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dourado); }
+.criacao-texto h3 { font-family: 'Playfair Display', serif; font-size: 1.28rem; font-weight: 400; color: var(--verde-escuro); line-height: 1.25; letter-spacing: -0.01em; text-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+.criacao-texto p { font-size: 0.83rem; color: var(--texto-suave); line-height: 1.65; }
+.criacao-link { font-size: 0.73rem; color: var(--verde-sage); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid var(--cinza); padding-bottom: 1px; display: inline-block; margin-top: 0.25rem; transition: color 0.2s; }
+.criacao-link:hover { color: var(--verde-escuro); }
+
+/* ── SOCIAL MEDIA — case único expandido ── */
+#socialmedia { background: var(--verde-escuro); }
+.sm-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.sm-esq h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.1rem, 3vw, 2.8rem); font-weight: 400; color: var(--offwhite); line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em; text-shadow: 0 1px 0 rgba(0,0,0,0.08); }
+.sm-esq h2 em { font-style: italic; color: var(--dourado-claro); }
+.sm-esq p { font-size: 0.88rem; color: var(--dourado-claro); opacity: 0.82; line-height: 1.78; margin-bottom: 1rem; }
+.sm-metricas { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(210,166,127,0.2); margin-top: 2rem; }
+.sm-metrica { background: rgba(53,64,50,0.8); padding: 1.4rem; }
+.sm-metrica .sm-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; color: var(--dourado-claro); line-height: 1; margin-bottom: 0.3rem; }
+.sm-metrica .sm-label { font-size: 0.68rem; color: var(--verde-sage); letter-spacing: 0.07em; text-transform: uppercase; line-height: 1.4; }
+.sm-dir { display: flex; flex-direction: column; gap: 1.5rem; }
+.sm-decisao { border-left: 2px solid rgba(210,166,127,0.3); padding-left: 1.4rem; }
+.sm-decisao h4 { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 400; font-style: italic; color: var(--dourado-claro); margin-bottom: 0.4rem; }
+.sm-decisao p { font-size: 0.82rem; color: var(--dourado-claro); opacity: 0.75; line-height: 1.65; }
+.sm-atual { background: rgba(210,166,127,0.1); border: 1px solid rgba(210,166,127,0.2); padding: 1.4rem; margin-top: 1rem; }
+.sm-atual h4 { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dourado); margin-bottom: 0.5rem; }
+.sm-atual p { font-size: 0.83rem; color: var(--dourado-claro); opacity: 0.8; line-height: 1.6; }
+
+/* ── DESIGN GRÁFICO — galeria com briefing ── */
+#design { background: var(--cinza); }
+.design-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #d0cdc8; margin-bottom: 3rem; }
+.design-peca { background: var(--offwhite); overflow: hidden; }
+.design-media { position: relative; isolation: isolate; overflow: hidden; cursor: zoom-in; background: var(--verde-escuro); }
+.design-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; filter: grayscale(15%); transition: transform 0.3s; }
+.design-peca:hover .design-img { transform: scale(1.03); }
+.design-carousel-btn { position: absolute; top: 50%; z-index: 1; width: 2.15rem; height: 2.15rem; border: 1px solid rgba(226,201,171,0.65); background: rgba(30,42,30,0.78); color: var(--dourado-claro); font-size: 1.2rem; cursor: pointer; transform: translateY(-50%); }
+.design-carousel-btn:hover { background: var(--dourado); color: var(--verde-escuro); }
+.design-carousel-btn:focus-visible { outline: 1px solid var(--dourado-claro); outline-offset: 0.2rem; }
+.design-carousel-btn.prev { left: 0.6rem; }
+.design-carousel-btn.next { right: 0.6rem; }
+.design-carousel-counter { position: absolute; right: 0.6rem; bottom: 0.5rem; z-index: 1; padding: 0.18rem 0.4rem; background: rgba(30,42,30,0.78); color: var(--dourado-claro); font-size: 0.63rem; letter-spacing: 0.07em; }
+.design-peca-leg { padding: 1rem 1.2rem; }
+.design-peca-leg span { font-size: 0.65rem; color: var(--texto-suave); letter-spacing: 0.06em; text-transform: uppercase; }
+.design-briefing { background: var(--offwhite); border: 1px solid #d0cdc8; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.design-briefing h3 { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 400; color: var(--verde-escuro); margin-bottom: 1rem; grid-column: span 2; letter-spacing: -0.01em; text-shadow: 0 1px 0 rgba(0,0,0,0.04); }
+.design-briefing p { font-size: 0.85rem; color: var(--texto-suave); line-height: 1.75; }
+.design-aprendizado { font-size: 0.85rem; color: var(--texto-suave); line-height: 1.75; border-left: 2px solid var(--dourado); padding-left: 1.2rem; }
+
+/* ── SOBRE ── */
+#sobre { background: var(--verde-escuro); }
+.sobre-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+.sobre-titulo { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 3vw, 2.9rem); font-weight: 400; line-height: 1.12; color: var(--offwhite); margin-bottom: 1.5rem; letter-spacing: -0.02em; text-shadow: 0 1px 0 rgba(0,0,0,0.08); }
+.sobre-titulo em { color: var(--dourado-claro); font-style: italic; }
+.sobre-meta { font-size: 0.73rem; color: var(--verde-sage); letter-spacing: 0.08em; text-transform: uppercase; }
+.sobre-texto p { font-size: 0.9rem; line-height: 1.8; color: var(--dourado-claro); opacity: 0.85; margin-bottom: 1.2rem; }
+.sobre-habilidades { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.hab-tag { font-size: 0.71rem; color: var(--dourado-claro); border: 1px solid rgba(210,166,127,0.3); padding: 0.25rem 0.7rem; }
+
+/* ── CONTATO ── */
+#contato { background: var(--verde-escuro); }
+.contato-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 5rem; align-items: start; }
+.contato-frase { font-family: 'Playfair Display', serif; font-size: clamp(2.1rem, 4vw, 3.2rem); font-weight: 400; line-height: 1.15; color: var(--offwhite); margin-bottom: 2rem; letter-spacing: -0.02em; text-shadow: 0 1px 0 rgba(0,0,0,0.08); }
+.contato-frase em { color: var(--dourado-claro); font-style: italic; }
+.contato-info { display: flex; flex-direction: column; gap: 1.4rem; }
+.contato-linha { display: flex; flex-direction: column; gap: 0.22rem; }
+.contato-rotulo { font-size: 0.65rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--dourado); }
+.contato-valor { font-size: 0.87rem; color: var(--offwhite); text-decoration: none; opacity: 0.82; transition: opacity 0.2s; }
+.contato-valor:hover { opacity: 1; color: var(--dourado-claro); }
+
+/* FOOTER */
+footer { background: #1e2a1e; padding: 1.4rem 3rem; display: flex; justify-content: space-between; font-size: 0.71rem; color: var(--verde-sage); opacity: 0.7; }
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.68rem; }
+  section { padding: 4rem 1.5rem; }
+  #hero { padding: 0 1.5rem 4rem; }
+  .hero-content { width: 100%; }
+  .cases-track { grid-auto-columns: minmax(280px, 82vw); }
+  .carousel-controls { justify-content: center; }
+  .sobre-grid, .contato-grid, .sm-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+  .foto-grid { grid-template-columns: 1fr; }
+  .foto-item.destaque { grid-column: span 1; }
+  .design-grid { grid-template-columns: 1fr 1fr; }
+  .design-briefing { grid-template-columns: 1fr; gap: 1.5rem; }
+  .design-briefing h3 { grid-column: span 1; }
+  .criacao-item { grid-template-columns: 1fr; }
+  .criacao-thumb, .criacao-item:nth-child(2) .criacao-thumb { grid-column: 1; grid-row: 1; min-height: 180px; }
+  .criacao-texto { grid-column: 1; grid-row: 2; }
+  .criacao-item:nth-child(2) .criacao-texto { grid-column: 1; }
+  .sm-metricas { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; gap: 0.5rem; }
+  .foto-carousel-btn.prev { left: 0.75rem; }
+  .foto-carousel-btn.next { right: 0.75rem; }
+  .case-modal { padding: 1rem; }
+  .case-modal-dialog { grid-template-columns: 1fr; height: calc(100vh - 2rem); max-height: calc(100vh - 2rem); overflow: hidden; }
+  .case-modal-media, .case-modal-media img { min-height: 180px; height: 34vh; }
+  .case-modal-content { overflow-y: auto; padding: 1.75rem 1.5rem 2.25rem; }
+  .case-modal-content .case-body { margin: 1.5rem -1.5rem -2.25rem; padding: 0 1.5rem 2.25rem; }
+  .case-modal-content .case-body-inner { padding: 1.75rem 0.5rem 0; }
+  .case-modal-content .case-nome { font-size: 1.4rem; }
+  .case-modal-content .case-body p, .case-modal-content .case-body ul li { font-size: 0.8rem; line-height: 1.65; }
+  .case-modal-content .case-body-inner { padding-top: 1.5rem; }
+  .foto-modal { padding: 1rem; }
+  .foto-modal-dialog { height: calc(100vh - 2rem); padding: 3rem 3.5rem; }
+  .foto-modal-btn.prev { left: 0.5rem; }
+  .foto-modal-btn.next { right: 0.5rem; }
+}
+
+@media (orientation: portrait) {
+  .criacao-thumb, .criacao-item:nth-child(2) .criacao-thumb { min-height: 0; padding: 0; background: transparent; }
+  .criacao-thumb .video-carousel { width: 100%; background: transparent; }
+  .criacao-thumb video { width: 100%; height: auto; max-height: none; aspect-ratio: auto; background: transparent; }
+  .video-carousel-nav { margin: 0; padding: 0.55rem 0 0.7rem; background: transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .case-body, .toggle-icone, .foto-img, .design-img { transition: none; }
+}
+
+@media (orientation: portrait) {
+  nav, nav.nav-hidden { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  nav { padding: 0.85rem 1.25rem; background: rgba(247,245,242,0.9); }
+  .nav-toggle { position: relative; z-index: 102; display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 42px; height: 42px; border: 1px solid rgba(53,64,50,0.25); background: rgba(247,245,242,0.9); color: var(--verde-escuro); cursor: pointer; }
+  .nav-toggle span { display: block; width: 18px; height: 1px; margin: 0 auto; background: currentColor; transition: transform 0.25s ease, opacity 0.25s ease; }
+  .nav-menu-aberto .nav-toggle span:first-child { transform: translateY(3px) rotate(45deg); }
+  .nav-menu-aberto .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav-menu-aberto .nav-toggle span:last-child { transform: translateY(-9px) rotate(-45deg); }
+  .nav-links { position: fixed; top: 0; right: 0; z-index: 101; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.5rem; width: min(82vw, 320px); height: 100vh; padding: 5rem 2rem 2rem; background: var(--offwhite); box-shadow: -18px 0 40px rgba(30,42,30,0.14); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.2,0.8,0.2,1); }
+  .nav-menu-aberto .nav-links { transform: translateX(0); }
+  .nav-links a { font-size: 0.78rem; }
+  body.nav-menu-aberto { overflow: hidden; }
+}
+</style>
+</head>
+<body id="top">
+
+<!-- NAV -->
+<nav>
+  <a href="#top" aria-label="Voltar para o topo" class="nav-logo-link">
+    <img src="images/logo1.png" alt="Ana Ladeira logo" class="nav-logo">
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#trajetoria">Trajetória</a></li>
+    <li><a href="#fotografia">Fotografia</a></li>
+    <li><a href="#criacao">Criação</a></li>
+    <li><a href="#socialmedia">Social Media</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-forma"></div>
+  <div class="hero-linha"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Portfólio · Comunicação e Publicidade · ESPM Rio</p>
+    <h1 class="hero-titulo">Planejamento,<br><em>narrativa</em><br>e criação.</h1>
+    <p class="hero-desc">Estudante de Comunicação e Publicidade na ESPM Rio. Construo conexões reais entre pessoas, marcas e histórias — com intenção estratégica e olhar estético.</p>
+    <a href="#projetos" class="hero-cta">Ver projetos ▸</a>
+  </div>
+</section>
+
+<!-- PROJETOS ACADÊMICOS -->
+<section id="projetos">
+  <p class="secao-label">Projetos acadêmicos</p>
+  <div class="secao-intro">
+    <h2>Briefings reais, soluções autorais.</h2>
+    <p>Projetos desenvolvidos na ESPM Rio com metodologia de mercado — pesquisa, estratégia, criação e apresentação para profissionais.</p>
+  </div>
+  <div class="cases-shell">
+    <div class="cases-track" id="casesTrack">
+
+    <!-- Band FM -->
+    <div class="case-card" onclick="toggleCase(this)">
+      <img src="images/cases/caseBandFM.png" alt="Band FM Rio" class="case-thumb">
+      <div class="case-header">
+        <span class="case-sessao">Planejamento · Campanha</span>
+        <span class="case-tipo">Projeto Integrado II · 2º período</span>
+        <h2 class="case-nome">Band FM Rio</h2>
+        <p class="case-sub">Estratégia de posicionamento e campanha integrada de 8 semanas para a Band FM 91.1 no mercado carioca.</p>
+        <p class="case-destaque">★ 2º lugar — Projeto Integrado II · ESPM Rio</p>
+      </div>
+      <div class="case-toggle"><span>Ver case</span><div class="toggle-icone">+</div></div>
+      <div class="case-body"><div class="case-body-inner">
+        <h3>O problema</h3>
+        <p>A Band FM chegou ao Rio em 2025 como gigante nacional, mas sua audiência real era predominantemente masculina e de classes A/B — o oposto do público-alvo histórico da marca: mulheres de classe C, 30–59 anos.</p>
+        <h3>Solução</h3>
+        <ul>
+          <li>Conceito: "A rádio que te leva pra casa" — 91.1 como endereço afetivo do carioca</li>
+          <li>Eixo conceitual: Casa Emocional — Companhia, Memória Musical Adulta, Pertencimento</li>
+          <li>Plano em 3 fases: awareness OOH, ativação com co-branding (Jaé), experiência com vans e microinfluenciadores</li>
+        </ul>
+        <div class="case-resultado"><strong>Resultado</strong>2º lugar no Projeto Integrado do 2º Período, ESPM Rio, jun/2026. Equipe: Clara Foeppel, Laura Seixo, Lucas Berriel, Lucas Guedes e Luiz Arthur Kozlowski.</div>
+        <a class="case-completo-link" href="https://canva.link/42s40f1jcr2ql7e" target="_blank" rel="noopener noreferrer">Confira aqui o case completo</a>
+      </div></div>
+    </div>
+
+    <!-- Maré do Rio -->
+    <div class="case-card" onclick="toggleCase(this)">
+      <img src="images/cases/caseMareRio.png" alt="Maré do Rio" class="case-thumb">
+      <div class="case-header">
+        <span class="case-sessao">Estratégia Criativa · Pitch</span>
+        <span class="case-tipo">Hackathon WMcCann × ESPM · 1º período</span>
+        <h2 class="case-nome">Maré do Rio</h2>
+        <p class="case-sub">Produtora conceitual para exportar não a paisagem do Rio, mas o olhar carioca. Menção Honrosa nos 90 anos da WMcCann.</p>
+        <p class="case-destaque">★ Menção Honrosa · pitch para profissionais da WMcCann</p>
+      </div>
+      <div class="case-toggle"><span>Ver case</span><div class="toggle-icone">+</div></div>
+      <div class="case-body"><div class="case-body-inner">
+        <h3>O desafio</h3>
+        <p>Criar solução escalável para o Rio se posicionar como potência exportadora em segmentos criativos — ideias, produtos e serviços.</p>
+        <h3>A solução</h3>
+        <p>"Não vendemos o cenário do Rio. Vendemos o olhar carioca." Dois pilares: produção de conteúdo original com identidade carioca + Escola Carioca de Criação.</p>
+        <h3>O quase erro dos 10 minutos finais</h3>
+        <p>Nos 3 minutos finais antes da entrega, decidimos confiar na intuição e voltar à ideia original — descartando uma sugestão que quebrava a lógica do conceito. Foi decisivo para a Menção Honrosa.</p>
+        <div class="case-resultado"><strong>Resultado</strong>Menção Honrosa — Hackathon WMcCann × ESPM. Três alunas do 1º período, pitch de 3 minutos para profissionais de uma das maiores agências do país. Com Juliana Madeiro e Ana Luiza Soares.</div>
+        <a class="case-completo-link" href="https://canva.link/zvhc0c8gbkhp1i3" target="_blank" rel="noopener noreferrer">Confira aqui o case completo</a>
+      </div></div>
+    </div>
+
+    <!-- Heineken -->
+    <div class="case-card" onclick="toggleCase(this)">
+      <img src="images/cases/caseHeineken.png" alt="Heineken" class="case-thumb">
+      <div class="case-header">
+        <span class="case-sessao">Redação · Copywriting</span>
+        <span class="case-tipo">CP2A + CP3A · ESPM Rio</span>
+        <h2 class="case-nome">Heineken</h2>
+        <p class="case-sub">Dois projetos em períodos consecutivos: Heineken 0.0 (testimonial e ultimate) em Publicidade e Propaganda, e redação avançada em CP3A.</p>
+        <p class="case-destaque">★ Dois períodos · evolução de linguagem publicitária</p>
+      </div>
+      <div class="case-toggle"><span>Ver case</span><div class="toggle-icone">+</div></div>
+      <div class="case-body"><div class="case-body-inner">
+        <h3>CP2A — Heineken 0.0</h3>
+        <p>Desenvolvimento de duas peças publicitárias para Heineken 0.0: formato testimonial (depoimento real como âncora da mensagem) e ultimate (peça de impacto visual e copy direto). Foco em construir argumento sem alienar quem consome álcool.</p>
+        <h3>CP3A — Redação Avançada</h3>
+        <p>Aprofundamento em técnica de redação publicitária com a Heineken como objeto de estudo. Construção de narrativa de marca com consistência de tom, voz e propósito ao longo de diferentes formatos.</p>
+        <div class="case-resultado"><strong>Resultado</strong>Dois projetos que documentam evolução técnica em copywriting e linguagem publicitária ao longo de dois períodos consecutivos na ESPM Rio.</div>
+        <a class="case-completo-link" href="https://canva.link/0miaivt2mnij73u" target="_blank" rel="noopener noreferrer">Confira aqui o case completo</a>
+      </div></div>
+    </div>
+
+    <!-- Semana Geek -->
+    <div class="case-card" onclick="toggleCase(this)">
+      <img src="images/cases/caseSemanaGeek.png" alt="Semana Geek" class="case-thumb">
+      <div class="case-header">
+        <span class="case-sessao">Gestão de Projeto · Parcerias</span>
+        <span class="case-tipo">Projeto Autoral · Núcleo Villa Aymoré</span>
+        <h2 class="case-nome">Semana Geek</h2>
+        <p class="case-sub">Evento cultural de 2 dias idealizado e executado como Coordenadora de Marketing do Núcleo Villa Aymoré — com as primeiras parcerias externas da história do núcleo.</p>
+        <p class="case-destaque">★ Monster Energy + Luderia Carioca · +20 participantes</p>
+      </div>
+      <div class="case-toggle"><span>Ver case</span><div class="toggle-icone">+</div></div>
+      <div class="case-body"><div class="case-body-inner">
+        <h3>O contexto</h3>
+        <p>Maio de 2025, período de provas finais. O Núcleo precisava de uma ação de maior visibilidade — algo que gerasse pertencimento sem orçamento próprio.</p>
+        <h3>Decisões</h3>
+        <ul>
+          <li>Parcerias fechadas antes de confirmar programação — estratégia que viabilizou o evento</li>
+          <li>Dia da Toalha: dinâmica criativa inspirada no universo geek</li>
+          <li>Torneio FIFA 2x2 + Workshop de Board Games com materiais dos parceiros</li>
+        </ul>
+        <div class="case-resultado"><strong>Resultado</strong>Primeiras parcerias externas do Núcleo Villa Aymoré: Monster Energy (120 latas) e Luderia Carioca (prêmios + acervo de board games). Atividade eleita a mais marcante do semestre pelos alunos.</div>
+        <a class="case-completo-link" href="https://app.notion.com/p/Semana-Geek-N-cleo-Villa-Aymor-ESPM-Rio-39fec8e0a7f881a6ae46deb38e8a9e6b?source=copy_link" target="_blank" rel="noopener noreferrer">Confira aqui o case completo</a>
+      </div></div>
+    </div>
+
+    </div>
+    <div class="carousel-controls" aria-label="Controles do carrossel">
+      <button class="carousel-btn" type="button" data-carousel-direction="prev" aria-label="Ver casos anteriores">‹</button>
+      <button class="carousel-btn" type="button" data-carousel-direction="next" aria-label="Ver próximos casos">›</button>
+    </div>
+  </div>
+</section>
+
+<div class="case-modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle" aria-hidden="true">
+  <div class="case-modal-dialog">
+    <button class="case-modal-close" type="button" aria-label="Fechar case">×</button>
+    <div class="case-modal-media"><img id="caseModalImage" src="images/hero.png" alt=""></div>
+    <div class="case-modal-content" id="caseModalContent"></div>
+  </div>
+</div>
+
+<div class="foto-modal" id="fotoModal" role="dialog" aria-modal="true" aria-label="Visualizador de fotografia" aria-hidden="true">
+  <div class="foto-modal-dialog">
+    <button class="foto-modal-close" type="button" aria-label="Fechar visualizador">×</button>
+    <button class="foto-modal-btn prev" type="button" aria-label="Imagem anterior">‹</button>
+    <img class="foto-modal-image" alt="">
+    <button class="foto-modal-btn next" type="button" aria-label="Próxima imagem">›</button>
+    <span class="foto-modal-counter"></span>
+  </div>
+</div>
+
+<!-- COMUNICAÇÃO -->
+<section id="trajetoria">
+  <p class="secao-label" style="color:var(--dourado);">Trajetória</p>
+  <div class="secao-intro">
+    <h2 style="color:var(--offwhite);">Palcos, entrevistas<br>e marcos.</h2>
+    <p style="color:var(--dourado-claro);opacity:0.82;">Uma linha do tempo de experiências, conquistas e participações que constroem minha trajetória em comunicação e cultura criativa.</p>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Mai/2026</div><div class="tl-papel">Palestrante</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>Rio2C 2026 — Festival Festivalia</h3>
+        <p>Palestrante no Palco Arts&Crafts com a apresentação "Joga na Roda: Download Arts&Crafts 2026" — síntese ao vivo, em dupla com Sunamita Machado, das melhores ideias e conteúdos de dois dias de festival, com participação aberta da plateia.</p>
+        <span class="tl-tag">Palco Arts&Crafts · 31/mai · 16h30</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Jun/2026</div><div class="tl-papel">Premiação</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>2º lugar — Projeto Integrado II</h3>
+        <p>Campanha integrada de 8 semanas para a Band FM Rio, desenvolvida com briefing, pesquisa, estratégia e criação na ESPM Rio.</p>
+        <span class="tl-tag">Projeto Integrado II · ESPM Rio</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Mar/2026</div><div class="tl-papel">Entrevistadora</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>Fest'Up Rio 2026 — APP Brasil</h3>
+        <p>Staff e entrevistadora na Casa 2 do maior festival de publicidade do Rio. Entrevistou profissionais de Artplan, The Pride Content, Kwai, ABOTTS, AB Pesquisas e Optimiza — cobertura de múltiplas frentes do mercado publicitário em um único evento.</p>
+        <span class="tl-tag">ESPM Rio · 28/mar/2026</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Mar/2026</div><div class="tl-papel">Reconhecimento</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>4º lugar — Ranking de Desempenho</h3>
+        <p>Reconhecimento como Estudante Destaque da ESPM Rio pelo desempenho acadêmico no 1º semestre de 2025.</p>
+        <span class="tl-tag">Estudante Destaque · ESPM Rio</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Jan/2026</div><div class="tl-papel">Palestrante</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>START ESPM 2026.1 — Fala, Veteranos!</h3>
+        <p>Convidada pelo Prof. Wagner Venturini para falar com os calouros sobre trajetória e primeiros semestres na ESPM Rio. Uma das primeiras oportunidades de oratória em ambiente institucional.</p>
+        <span class="tl-tag">Convite institucional · Jan/2026</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Nov/2025</div><div class="tl-papel">Premiação</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>Menção Honrosa — Hackathon WMcCann</h3>
+        <p>Cria do Rio, solução desenvolvida no Hackathon WMcCann × ESPM e apresentada em pitch para profissionais da agência.</p>
+        <span class="tl-tag">Hackathon WMcCann × ESPM</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">2025–2026</div><div class="tl-papel">Convidada</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>Podcast Primeira Jornada ESPM</h3>
+        <p>Convidada duas vezes para o podcast oficial da ESPM Rio. Tema: "Expectativa x realidade: como é a vida na faculdade" — conversa sobre a transição para o ensino superior e os primeiros semestres de Comunicação e Publicidade.</p>
+        <span class="tl-tag">2 episódios · ESPM Rio</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">2025–2026</div><div class="tl-papel">Entrevistadora</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>Entrevista — Maria Carregal, WMcCann</h3>
+        <p>Primeira entrevista com profissional do mercado, realizada em disciplina do 1º período. Conversa de mais de 30 minutos com a profissional da WMcCann — registrada em vídeo completo.</p>
+        <span class="tl-tag">1º período · ESPM Rio</span>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-data"><div class="tl-data">Mai/2025</div><div class="tl-papel">Coordenação</div></div>
+      <div class="timeline-linha"></div>
+      <div class="timeline-conteudo">
+        <h3>Semana Geek — ESPM Rio</h3>
+        <p>Idealização e coordenação de evento cultural de dois dias no Núcleo Villa Aymoré, com as primeiras parcerias externas do núcleo.</p>
+        <span class="tl-tag">Monster Energy + Luderia Carioca</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOTOGRAFIA -->
+<section id="fotografia">
+  <p class="secao-label">Fotografia</p>
+  <div class="secao-intro">
+    <h2>Do laboratório ao olhar publicitário.</h2>
+    <p>Três momentos: fotografia experimental no Lab de Imagem, fotografia publicitária aplicada e ensaios autorais de reposicionamento de marca pessoal.</p>
+  </div>
+  <div class="foto-grid">
+
+    <div class="foto-item">
+      <img src="https://media.canva.com/v2/document-image/hash:159002440/height:335/id:DAG3IM9Fx5E/type:B/width:596?credential=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTA5MDM0MzUsImlhdCI6MTc4ODMxMTQzNSwic2NvcGUiOiJyZWFkOnRodW1ibmFpbHMiLCJzdWIiOiIxNjA3Mjc3ODMzIn0.xvnRuHvtlA2lsLFElfAP_u9yJvH4I0Zu3JZQQfq6vXJLCFmCDzGpMDIB1-kDjcRerBUMIcIGrxgWdQ-yqvChA" alt="Lab de Fotografia" class="foto-img" onerror="this.parentElement.querySelector('.foto-placeholder') && this.parentElement.querySelector('.foto-placeholder').style.setProperty('display','flex'); this.style.display='none'">
+      <div class="foto-legenda">
+        <div class="fl-materia" role="button" tabindex="0" aria-expanded="false" aria-controls="foto-viewer-1" data-images="https://media.canva.com/v2/document-image/hash:159002440/height:335/id:DAG3IM9Fx5E/type:B/width:596?credential=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTA5MDM0MzUsImlhdCI6MTc4ODMxMTQzNSwic2NvcGUiOiJyZWFkOnRodW1ibmFpbHMiLCJzdWIiOiIxNjA3Mjc3ODMzIn0.xvnRuHvtA2lsLFElfAP_u9yJvH4I0Zu3JZQQfq6vXJLCFmCDzGpMDIB1-kDjcRerBUMIcIGrxgWdQ-yqvChA">Lab de Imagem · CP1A · ESPM Rio</div>
+        <h3>Processos - Fotografia de Produtos</h3>
+        <p>Desenvolvimento de processos fotográficos para produtos, do aprofundamento técnico à construção de conceito visual.</p>
+      </div>
+    </div>
+
+    <div class="foto-item">
+      <img src="https://media.canva.com/v2/document-image/hash:2075214160/height:335/id:DAGxv9HGHOM/type:B/width:596?credential=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTA5MDM0MzUsImlhdCI6MTc4ODMxMTQzNSwic2NvcGUiOiJyZWFkOnRodW1ibmFpbHMiLCJzdWIiOiIxNjA3Mjc3ODMzIn0.xvnRuHvtlA2lsLFElfAP_u9yJvH4I0Zu3JZQQfq6vXJLCFmCDzGpMDIB1-kDjcRerBUMIcIGrxgWdQ-yqvChA" alt="Lab Fotografia 2" class="foto-img" onerror="this.style.display='none'">
+      <div class="foto-legenda">
+        <div class="fl-materia" role="button" tabindex="0" aria-expanded="false" aria-controls="foto-viewer-2" data-images="https://media.canva.com/v2/document-image/hash:2075214160/height:335/id:DAGxv9HGHOM/type:B/width:596?credential=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTA5MDM0MzUsImlhdCI6MTc4ODMxMTQzNSwic2NvcGUiOiJyZWFkOnRodW1ibmFpbHMiLCJzdWIiOiIxNjA3Mjc3ODMzIn0.xvnRuHvtA2lsLFElfAP_u9yJvH4I0Zu3JZQQfq6vXJLCFmCDzGpMDIB1-kDjcRerBUMIcIGrxgWdQ-yqvChA">Lab de Imagem · CP1A</div>
+        <h3>Série Processos</h3>
+        <p>Segunda entrega — aprofundamento técnico e desenvolvimento de conceito visual.</p>
+      </div>
+    </div>
+
+    <div class="foto-item">
+      <img src="https://media.canva.com/v2/document-image/hash:-1319090947/height:335/id:DAHDypnvIqM/type:B/width:596?credential=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTA5MDM0MzUsImlhdCI6MTc4ODMxMTQzNSwic2NvcGUiOiJyZWFkOnRodW1ibmFpbHMiLCJzdWIiOiIxNjA3Mjc3ODMzIn0.xvnRuHvtlA2lsLFElfAP_u9yJvH4I0Zu3JZQQfq6vXJLCFmCDzGpMDIB1-kDjcRerBUMIcIGrxgWdQ-yqvChA" alt="Fotografia Publicitária" class="foto-img" onerror="this.style.display='none'">
+      <div class="foto-legenda">
+        <div class="fl-materia" role="button" tabindex="0" aria-expanded="false" aria-controls="foto-viewer-3" data-images="https://media.canva.com/v2/document-image/hash:-1319090947/height:335/id:DAHDypnvIqM/type:B/width:596?credential=eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTA5MDM0MzUsImlhdCI6MTc4ODMxMTQzNSwic2NvcGUiOiJyZWFkOnRodW1ibmFpbHMiLCJzdWIiOiIxNjA3Mjc3ODMzIn0.xvnRuHvtA2lsLFElfAP_u9yJvH4I0Zu3JZQQfq6vXJLCFmCDzGpMDIB1-kDjcRerBUMIcIGrxgWdQ-yqvChA">Fotografia Publicitária · CP2A</div>
+        <h3>Processos — Fotografia Publicitária</h3>
+        <p>Transição da fotografia experimental para a linguagem aplicada ao mercado publicitário.</p>
+      </div>
+    </div>
+
+    <div class="foto-item destaque">
+      <div class="foto-placeholder" style="background:var(--verde-escuro);min-height:260px;display:flex;">
+        <span style="font-size:1.8rem;opacity:0.3;">📷</span>
+        <span>Ensaios de reposicionamento — adicionar fotos</span>
+      </div>
+      <div class="foto-legenda">
+        <div class="fl-materia" role="button" tabindex="0" aria-expanded="false" aria-controls="foto-viewer-4" data-images=""><span>Trabalho autoral · Ana Ladeira Makeup</span></div>
+        <h3>Ensaios de Reposicionamento de Marca Pessoal</h3>
+        <p>Direção estética e produção de ensaios fotográficos para empreendedoras que precisavam alinhar imagem ao posicionamento desejado. Identidade visual como extensão da narrativa.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CRIAÇÃO DE CONTEÚDO -->
+<section id="criacao">
+  <p class="secao-label">Criação de conteúdo</p>
+  <div class="secao-intro">
+    <h2>Conteúdo com intenção — do roteiro à entrega.</h2>
+    <p>Criação, captação e edição de vídeos para marca pessoal e clientes. Do planejamento editorial à câmera.</p>
+  </div>
+  <div class="criacao-lista">
+
+    <div class="criacao-item">
+      <div class="criacao-thumb">
+        <video controls preload="metadata" aria-label="Vídeo 1 de conteúdo @aanaladeira"><source src="videos/conteudosAna/1.mp4" type="video/mp4"></video>
+        <video controls preload="metadata" aria-label="Vídeo 2 de conteúdo @aanaladeira"><source src="videos/conteudosAna/2.mp4" type="video/mp4"></video>
+        <video controls preload="metadata" aria-label="Vídeo 3 de conteúdo @aanaladeira"><source src="videos/conteudosAna/3.mp4" type="video/mp4"></video>
+      </div>
+      <div class="criacao-texto">
+        <span class="criacao-tipo">Marca Pessoal · Instagram</span>
+        <h3>Conteúdo @aanaladeira</h3>
+        <p>Planejamento, roteiro, captação e edição de vídeos para o perfil pessoal. Conteúdo que une posicionamento profissional em comunicação com identidade autoral — sem perder a voz.</p>
+        <a href="https://instagram.com/aanaladeira" target="_blank" rel="noopener noreferrer" class="criacao-link">Ver perfil no Instagram ↗</a>
+      </div>
+    </div>
+
+    <div class="criacao-item">
+      <div class="criacao-thumb">
+        <video controls preload="metadata" aria-label="Vídeo 1 de produção para clientes"><source src="videos/conteudosClientes/1.mp4" type="video/mp4"></video>
+        <video controls preload="metadata" aria-label="Vídeo 2 de produção para clientes"><source src="videos/conteudosClientes/2.mp4" type="video/mp4"></video>
+        <video controls preload="metadata" aria-label="Vídeo 3 de produção para clientes"><source src="videos/conteudosClientes/3.mp4" type="video/mp4"></video>
+      </div>
+      <div class="criacao-texto">
+        <span class="criacao-tipo">Captação e Edição · Clientes</span>
+        <h3>Produção para clientes</h3>
+        <p>Captação e edição de vídeos para marcas e profissionais. Do briefing à entrega — roteiro, gravação, edição e adaptação para diferentes formatos e plataformas.</p>
+      </div>
+    </div>
+
+    <div class="criacao-item">
+      <div class="criacao-thumb">
+        <video controls preload="metadata" aria-label="Vídeo 1 de identidade digital"><source src="videos/identidadeDigital/IMG_1556.mp4" type="video/mp4"></video>
+        <video controls preload="metadata" aria-label="Vídeo 2 de identidade digital"><source src="videos/identidadeDigital/IMG_3459.mp4" type="video/mp4"></video>
+        <video controls preload="metadata" aria-label="Vídeo 3 de identidade digital"><source src="videos/identidadeDigital/IMG_7845.mp4" type="video/mp4"></video>
+      </div>
+      <div class="criacao-texto">
+        <span class="criacao-tipo">Marca Pessoal · Reposicionamento</span>
+        <h3>Construção de identidade digital</h3>
+        <p>Estratégia de conteúdo e direção visual para empreendedoras que precisavam encontrar ou fortalecer a própria voz nas redes. Do diagnóstico ao conteúdo publicado.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="socialmedia">
+  <p class="secao-label" style="color:var(--dourado);">Social media</p>
+  <div class="sm-wrapper">
+    <div class="sm-esq">
+      <h2>Alcance que<br>vira <em>comunidade</em>.</h2>
+      <p>Gestão estratégica do Instagram @marcioramosir para o Dr. Márcio Ramos — cirurgião-dentista com 40 anos de carreira e criador da Odontologia do Desejo.</p>
+      <p>O perfil tinha base expressiva, mas engajamento real baixo e conversão limitada. A estratégia foi simples: antes de mais impulsionamento, nutrir quem já estava lá.</p>
+      <div class="sm-metricas">
+        <div class="sm-metrica"><div class="sm-num">+114%</div><div class="sm-label">crescimento de alcance em maio/2026</div></div>
+        <div class="sm-metrica"><div class="sm-num">34 mil</div><div class="sm-label">visualizações no melhor mês</div></div>
+        <div class="sm-metrica"><div class="sm-num">39.755</div><div class="sm-label">views no melhor post · 61 compartilhamentos</div></div>
+        <div class="sm-metrica"><div class="sm-num">10</div><div class="sm-label">profissionais de saúde convertidos em curso pago</div></div>
+      </div>
+    </div>
+    <div class="sm-dir">
+      <div class="sm-decisao">
+        <h4>Humanização antes de venda</h4>
+        <p>Série de vídeos contando a trajetória do Dr. Márcio — de onde veio, como surgiu a Odontologia do Desejo. Identificação antes de argumento comercial.</p>
+      </div>
+      <div class="sm-decisao">
+        <h4>Autoridade com propósito</h4>
+        <p>Conteúdos educativos sobre NDLs posicionando o Dr. Márcio como referência de mercado — sem apelo direto à venda, construindo percepção de expertise.</p>
+      </div>
+      <div class="sm-decisao">
+        <h4>Consistência editorial</h4>
+        <p>12 posts em 22 dias úteis em março. Presença contínua no feed sinalizando atividade regular para o algoritmo — e para a audiência.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN GRÁFICO -->
+<section id="design">
+  <p class="secao-label">Design gráfico</p>
+  <div class="secao-intro">
+    <h2>Photoshop, Illustrator.</h2>
+    <p>Projeto de Design Gráfico na ESPM Rio — da reprodução de campanhas reais à criação autoral com as mesmas ferramentas.</p>
+  </div>
+  <div class="design-grid">
+    <div class="design-peca">
+      <div class="design-media" data-images-key="hortifruti"></div>
+      <div class="design-peca-leg"><span>Aniversário · Hortifruti</span></div>
+    </div>
+    <div class="design-peca">
+      <div class="design-media" data-images-key="hortiflix"></div>
+      <div class="design-peca-leg"><span>Hortiflix</span></div>
+    </div>
+  </div>
+  <div class="design-briefing">
+    <h3>Rede Hortifruti — Design Gráfico, ESPM Rio</h3>
+    <p>A base das aulas foi estudar e reproduzir as campanhas reais da Rede Hortifruti no Photoshop e Illustrator. Reprodução como método de aprendizado — entender as escolhas de quem já sabe antes de criar as próprias.</p>
+    <div class="design-aprendizado">
+      <p>Quando chegou a etapa de criar 4 campanhas próprias, parecia que a criatividade não ia fluir. No final, com o prof. Léo, não é que funcionou? As campanhas ainda precisam do nosso olhar e do nosso toque — a ferramenta sozinha não substitui isso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <p class="secao-label" style="color:var(--dourado);">Sobre mim</p>
+  <div class="sobre-grid">
+    <div>
+      <h2 class="sobre-titulo">Comunicação<br>com <em>propósito</em>.</h2>
+      <p class="sobre-meta">Comunicação e Publicidade · ESPM Rio · 2025–2029</p>
+    </div>
+    <div class="sobre-texto">
+      <p>Nasci e cresci na Baixada Fluminense. Construí minha trajetória conciliando comunicação, marketing e produção de conteúdo — sempre com foco em criar conexões reais entre pessoas, marcas e histórias.</p>
+      <p>Atuo como Coordenadora de Marketing no Núcleo Villa Aymoré da ESPM Rio, com foco em e-mail marketing, comunicação institucional e HubSpot. Tenho especial interesse em planejamento estratégico e redação publicitária.</p>
+      <p>Acredito que estratégia e narrativa não são campos separados. A melhor comunicação é aquela que sabe exatamente o que quer dizer — e encontra a forma mais honesta de dizer.</p>
+      <div class="sobre-habilidades">
+        <span class="hab-tag">Planejamento estratégico</span>
+        <span class="hab-tag">Redação publicitária</span>
+        <span class="hab-tag">Storytelling</span>
+        <span class="hab-tag">Conteúdo digital</span>
+        <span class="hab-tag">HubSpot</span>
+        <span class="hab-tag">E-mail marketing</span>
+        <span class="hab-tag">Captação de vídeo</span>
+        <span class="hab-tag">Fotografia</span>
+        <span class="hab-tag">Photoshop · Illustrator</span>
+        <span class="hab-tag">Excel · Power BI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <p class="secao-label" style="color:var(--dourado);">Contato</p>
+  <div class="contato-grid">
+    <div>
+      <h2 class="contato-frase">Disponível para<br><em>oportunidades</em><br>de estágio.</h2>
+    </div>
+    <div class="contato-info">
+      <div class="contato-linha"><span class="contato-rotulo">E-mail</span><a href="mailto:analadeira1997@gmail.com" class="contato-valor">analadeira1997@gmail.com</a></div>
+      <div class="contato-linha"><span class="contato-rotulo">LinkedIn</span><a href="https://linkedin.com/in/aanaladeira" target="_blank" rel="noopener noreferrer" class="contato-valor">linkedin.com/in/aanaladeira</a></div>
+      <div class="contato-linha"><span class="contato-rotulo">Instagram</span><a href="https://instagram.com/aanaladeira" target="_blank" rel="noopener noreferrer" class="contato-valor">@aanaladeira</a></div>
+      <div class="contato-linha"><span class="contato-rotulo">Currículo</span><a href="currículoAnaLadeira.pdf" download class="contato-valor">Baixar currículo ↓</a></div>
+      <div class="contato-linha"><span class="contato-rotulo">Localização</span><span class="contato-valor">Rio de Janeiro, RJ</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Ana Ladeira © 2026</span>
+  <span>Comunicação e Publicidade · ESPM Rio</span>
+</footer>
+
+<script>
+const nav = document.querySelector('nav');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav-links a');
+const hero = document.getElementById('hero');
+const heroHeight = () => hero ? hero.offsetHeight : 0;
+
+function toggleNavByScroll() {
+  if (!nav) return;
+
+  const shouldShow = window.scrollY > heroHeight() * 0.7;
+  nav.classList.toggle('nav-visible', shouldShow);
+  nav.classList.toggle('nav-hidden', !shouldShow);
+}
+
+window.addEventListener('scroll', toggleNavByScroll, { passive: true });
+window.addEventListener('load', toggleNavByScroll);
+
+toggleNavByScroll();
+
+function toggleMobileMenu(open) {
+  if (!nav || !navToggle) return;
+  nav.classList.toggle('nav-menu-aberto', open);
+  document.body.classList.toggle('nav-menu-aberto', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+}
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    toggleMobileMenu(!nav.classList.contains('nav-menu-aberto'));
+  });
+  navLinks.forEach(link => link.addEventListener('click', () => toggleMobileMenu(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') toggleMobileMenu(false);
+  });
+}
+
+const caseModal = document.getElementById('caseModal');
+const caseModalContent = document.getElementById('caseModalContent');
+const caseModalImage = document.getElementById('caseModalImage');
+const caseModalClose = caseModal.querySelector('.case-modal-close');
+let lastCaseTrigger = null;
+
+const timeline = document.querySelector('#trajetoria .timeline');
+const timelineOrder = [
+  '2º lugar — Projeto Integrado II',
+  'Rio2C 2026 — Festival Festivalia',
+  'Fest\'Up Rio 2026 — APP Brasil',
+  '4º lugar — Ranking de Desempenho',
+  'START ESPM 2026.1 — Fala, Veteranos!',
+  'Podcast Primeira Jornada ESPM',
+  'Entrevista — Maria Carregal, WMcCann',
+  'Menção Honrosa — Hackathon WMcCann',
+  'Semana Geek — ESPM Rio'
+];
+
+if (timeline) {
+  [...timeline.children]
+    .sort((itemA, itemB) => timelineOrder.indexOf(itemA.querySelector('h3').textContent.trim()) - timelineOrder.indexOf(itemB.querySelector('h3').textContent.trim()))
+    .forEach(item => timeline.appendChild(item));
+}
+
+function toggleCase(card) {
+  lastCaseTrigger = card;
+  const header = card.querySelector('.case-header');
+  const body = card.querySelector('.case-body');
+  const sourceImage = card.querySelector('.case-thumb');
+  caseModalContent.innerHTML = `<div class="case-header">${header.innerHTML}</div>${body.outerHTML}`;
+  caseModalContent.querySelector('.case-nome').id = 'caseModalTitle';
+  caseModalImage.src = sourceImage ? sourceImage.src : 'images/hero.png';
+  caseModalImage.alt = sourceImage ? sourceImage.alt : `Imagem ilustrativa de ${card.querySelector('.case-nome').textContent}`;
+  caseModal.classList.add('aberto');
+  caseModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-aberta');
+  caseModalClose.focus();
+}
+
+function closeCaseModal() {
+  caseModal.classList.remove('aberto');
+  caseModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-aberta');
+  if (lastCaseTrigger) lastCaseTrigger.focus();
+}
+
+caseModalClose.addEventListener('click', closeCaseModal);
+caseModal.addEventListener('click', event => {
+  if (event.target === caseModal) closeCaseModal();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && caseModal.classList.contains('aberto')) closeCaseModal();
+});
+
+const caseTrack = document.getElementById('casesTrack');
+const caseControls = document.querySelectorAll('[data-carousel-direction]');
+const casesShell = document.querySelector('.cases-shell');
+
+function updateCarouselState() {
+  if (!caseTrack || !casesShell) return;
+
+  const hasOverflow = caseTrack.scrollWidth > caseTrack.clientWidth + 1;
+  casesShell.classList.toggle('has-overflow', hasOverflow);
+
+  caseControls.forEach(button => {
+    const shouldShow = hasOverflow;
+    button.style.visibility = shouldShow ? 'visible' : 'hidden';
+    button.style.opacity = shouldShow ? '1' : '0';
+    button.style.pointerEvents = shouldShow ? 'auto' : 'none';
+  });
+}
+
+if (caseTrack && caseControls.length) {
+  const getStep = () => {
+    const card = caseTrack.querySelector('.case-card');
+    if (!card) return 0;
+    const style = window.getComputedStyle(caseTrack);
+    const gap = parseFloat(style.columnGap || style.gap || '0');
+    return card.getBoundingClientRect().width + gap;
+  };
+
+  const wrapCarousel = () => {
+    const maxScroll = caseTrack.scrollWidth - caseTrack.clientWidth;
+    if (caseTrack.scrollLeft <= 12) {
+      caseTrack.scrollLeft = maxScroll - 16;
+    } else if (caseTrack.scrollLeft >= maxScroll - 12) {
+      caseTrack.scrollLeft = 16;
+    }
+  };
+
+  caseControls.forEach(button => {
+    button.addEventListener('click', () => {
+      const direction = button.dataset.carouselDirection === 'next' ? 1 : -1;
+      const step = getStep();
+      caseTrack.scrollBy({ left: direction * step, behavior: 'smooth' });
+      setTimeout(wrapCarousel, 420);
+    });
+  });
+
+  updateCarouselState();
+  window.addEventListener('resize', updateCarouselState);
+  caseTrack.addEventListener('scroll', updateCarouselState);
+}
+
+document.querySelectorAll('.foto-img').forEach(image => {
+  image.onerror = () => {
+    image.onerror = null;
+    image.src = 'images/hero.png';
+  };
+});
+
+const fotoItems = [...document.querySelectorAll('#fotografia .foto-item')];
+const produtoProcessos = fotoItems.find(item => item.querySelector('h3')?.textContent.trim() === 'Processos - Fotografia de Produtos');
+const serieProcessos = fotoItems.find(item => item.querySelector('h3')?.textContent.trim() === 'Série Processos');
+const ensaioAutoral = fotoItems.find(item => item.querySelector('h3')?.textContent.trim() === 'Ensaios de Reposicionamento de Marca Pessoal');
+
+if (produtoProcessos && serieProcessos) {
+  serieProcessos.remove();
+}
+
+const fotoGalerias = {
+  'Processos - Fotografia de Produtos': [
+    'images/FotografiadeProdutos/Trabalho Coletivo de Fotografia - Grupo 2.png',
+    'images/FotografiadeProdutos/Trabalho Coletivo de Fotografia - Grupo 2 (1).png',
+    'images/FotografiadeProdutos/Trabalho Coletivo de Fotografia - Grupo 2 (2).png',
+    'images/FotografiadeProdutos/Trabalho Coletivo de Fotografia - Grupo 2 (3).png',
+    'images/FotografiadeProdutos/Trabalho Coletivo de Fotografia - Grupo 2 (5).png'
+  ],
+  'Processos — Fotografia Publicitária': [
+    'images/FotografiaPublicitaria/Cópia de Processos Individuais - Lab de FotografiaAna Ladeira.png',
+    'images/FotografiaPublicitaria/Cópia de Processos Individuais - Lab de FotografiaAna Ladeira (1).png',
+    'images/FotografiaPublicitaria/Módulo 1 - Ana Ladeira.png',
+    'images/FotografiaPublicitaria/Módulo 1 - Ana Ladeira (1).png',
+    'images/FotografiaPublicitaria/Módulo 1 - Ana Ladeira (2).png',
+    'images/FotografiaPublicitaria/Módulo 3 em grupo.png',
+    'images/FotografiaPublicitaria/Módulo 3 em grupo (1).png',
+    'images/FotografiaPublicitaria/Processos Individuais - Fotografia PublicitáriaAna Ladeira.png',
+    'images/FotografiaPublicitaria/Processos Individuais - Fotografia PublicitáriaAna Ladeira (1).png',
+    'images/FotografiaPublicitaria/Processos Individuais - Fotografia PublicitáriaAna Ladeira (2).png',
+    'images/FotografiaPublicitaria/Processos Individuais - Fotografia PublicitáriaAna Ladeira (3).png'
+  ],
+  'Ensaios de Reposicionamento de Marca Pessoal': [
+    'images/MarcaPessoal/2-IMG_3303_jpg.jpg',
+    'images/MarcaPessoal/8-IMG_3426_jpg.jpg',
+    'images/MarcaPessoal/21-IMG_3378_jpg.jpg',
+    'images/MarcaPessoal/24-IMG_3367_jpg.jpg',
+    'images/MarcaPessoal/31-IMG_3352_jpg.jpg',
+    'images/MarcaPessoal/36-IMG_3333_jpg.jpg',
+    'images/MarcaPessoal/42-IMG_3299_jpg.jpg',
+    'images/MarcaPessoal/44-IMG_3282_jpg.jpg',
+    'images/MarcaPessoal/Dark Black Simple Professional Photography Studio Presentation.png',
+    'images/MarcaPessoal/Dark Black Simple Professional Photography Studio Presentation (1).png',
+    'images/MarcaPessoal/Dark Black Simple Professional Photography Studio Presentation (2).png',
+    'images/MarcaPessoal/Dark Black Simple Professional Photography Studio Presentation (3).png',
+    'images/MarcaPessoal/IMG_4103_jpg.jpg',
+    'images/MarcaPessoal/Ingrid Lins-1.jpg',
+    'images/MarcaPessoal/Ingrid Lins-1 (1).jpg',
+    'images/MarcaPessoal/Ingrid Lins-1 (2).jpg',
+    'images/MarcaPessoal/Ingrid Lins-1 (3).jpg',
+    'images/MarcaPessoal/Processos Individuais - Lab de FotografiaAna Ladeira (1).png',
+    'images/MarcaPessoal/Processos Individuais - Lab de FotografiaAna Ladeira (2).png'
+  ]
+};
+
+fotoItems.forEach(item => {
+  const title = item.querySelector('h3')?.textContent.trim();
+  const sources = fotoGalerias[title];
+  if (!sources) return;
+  const materia = item.querySelector('.fl-materia');
+  materia.dataset.images = sources.join('|');
+  let image = item.querySelector('.foto-img');
+  if (!image) {
+    image = document.createElement('img');
+    image.className = 'foto-img';
+    image.alt = title;
+    item.querySelector('.foto-placeholder').replaceWith(image);
+  }
+  image.src = sources[0];
+});
+
+if (ensaioAutoral) ensaioAutoral.classList.add('autoral');
+
+const fotoModal = document.getElementById('fotoModal');
+const fotoModalImage = fotoModal.querySelector('.foto-modal-image');
+const fotoModalCounter = fotoModal.querySelector('.foto-modal-counter');
+const fotoModalClose = fotoModal.querySelector('.foto-modal-close');
+let fotoModalSources = [];
+let fotoModalIndex = 0;
+
+function renderFotoModal() {
+  fotoModalImage.src = fotoModalSources[fotoModalIndex];
+  fotoModalImage.alt = `Fotografia ${fotoModalIndex + 1}`;
+  fotoModalCounter.textContent = `${fotoModalIndex + 1} / ${fotoModalSources.length}`;
+}
+
+function openFotoModal(sources, index) {
+  fotoModalSources = sources;
+  fotoModalIndex = index;
+  renderFotoModal();
+  fotoModal.classList.add('aberto');
+  fotoModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-aberta');
+  fotoModalClose.focus();
+}
+
+function closeFotoModal() {
+  fotoModal.classList.remove('aberto');
+  fotoModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-aberta');
+}
+
+fotoModalClose.addEventListener('click', closeFotoModal);
+fotoModal.addEventListener('click', event => {
+  if (event.target === fotoModal) closeFotoModal();
+});
+fotoModal.querySelector('.foto-modal-btn.prev').addEventListener('click', () => {
+  fotoModalIndex = (fotoModalIndex - 1 + fotoModalSources.length) % fotoModalSources.length;
+  renderFotoModal();
+});
+fotoModal.querySelector('.foto-modal-btn.next').addEventListener('click', () => {
+  fotoModalIndex = (fotoModalIndex + 1) % fotoModalSources.length;
+  renderFotoModal();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && fotoModal.classList.contains('aberto')) closeFotoModal();
+});
+
+document.querySelectorAll('#fotografia .foto-item').forEach(item => {
+  const image = item.querySelector('.foto-img');
+  const placeholder = item.querySelector('.foto-placeholder');
+  const materia = item.querySelector('.fl-materia');
+  if (!materia || (!image && !placeholder)) return;
+  materia.removeAttribute('role');
+  materia.removeAttribute('tabindex');
+  materia.removeAttribute('aria-expanded');
+  materia.removeAttribute('aria-controls');
+
+  const sources = materia.dataset.images ? materia.dataset.images.split('|').filter(Boolean) : image ? [image.src] : [];
+
+  const media = document.createElement('div');
+  media.className = 'foto-media';
+  (image || placeholder).before(media);
+  media.append(image || placeholder);
+  if (sources.length < 2) return;
+
+  const previous = document.createElement('button');
+  previous.className = 'foto-carousel-btn prev';
+  previous.type = 'button';
+  previous.setAttribute('aria-label', 'Imagem anterior');
+  previous.textContent = '‹';
+  const next = previous.cloneNode(true);
+  next.className = 'foto-carousel-btn next';
+  next.setAttribute('aria-label', 'Próxima imagem');
+  next.textContent = '›';
+  const counter = document.createElement('span');
+  counter.className = 'foto-carousel-counter';
+  media.append(previous, next, counter);
+
+  let currentImage = 0;
+  const renderImage = () => {
+    image.classList.add('carregando');
+    image.src = sources[currentImage];
+    image.alt = `${materia.textContent.trim()} — imagem ${currentImage + 1}`;
+    counter.textContent = `${currentImage + 1} / ${sources.length}`;
+  };
+
+  image.addEventListener('load', () => image.classList.remove('carregando'));
+  image.addEventListener('error', () => {
+    image.onerror = null;
+    image.src = 'images/hero.png';
+  });
+  previous.addEventListener('click', () => {
+    currentImage = (currentImage - 1 + sources.length) % sources.length;
+    renderImage();
+  });
+  next.addEventListener('click', () => {
+    currentImage = (currentImage + 1) % sources.length;
+    renderImage();
+  });
+  image.addEventListener('click', () => openFotoModal(sources, currentImage));
+  renderImage();
+});
+
+/* ── DESIGN GRÁFICO — carrosséis Hortifruti / Hortiflix ── */
+// Liste aqui os arquivos de cada pasta (os caminhos precisam bater exatamente
+// com os nomes dos arquivos dentro de images/Hortifruti/ e images/Hortiflix/).
+const designGalerias = {
+  hortifruti: [
+    'images/Hortifruti/0.png',
+    'images/Hortifruti/1.png',
+    'images/Hortifruti/2.png',
+    'images/Hortifruti/3.png',
+    'images/Hortifruti/4.png',
+    'images/Hortifruti/5.png',
+    'images/Hortifruti/6.png',
+    'images/Hortifruti/7.png'
+  ],
+  hortiflix: [
+    'images/Hortflix/1.png',
+    'images/Hortflix/2.png',
+    'images/Hortflix/3.png'
+  ]
+};
+
+document.querySelectorAll('#design .design-media').forEach(media => {
+  const key = media.dataset.imagesKey;
+  const sources = designGalerias[key] || [];
+  if (!sources.length) return;
+
+  const image = document.createElement('img');
+  image.className = 'design-img';
+  media.appendChild(image);
+
+  let currentImage = 0;
+  let counter;
+
+  const renderImage = () => {
+    image.src = sources[currentImage];
+    image.alt = `${media.closest('.design-peca').querySelector('.design-peca-leg span').textContent.trim()} — imagem ${currentImage + 1}`;
+    if (counter) counter.textContent = `${currentImage + 1} / ${sources.length}`;
+  };
+
+  image.addEventListener('error', () => {
+    image.onerror = null;
+    image.src = 'images/hero.png';
+  });
+  image.addEventListener('click', () => openFotoModal(sources, currentImage));
+
+  if (sources.length > 1) {
+    const previous = document.createElement('button');
+    previous.className = 'design-carousel-btn prev';
+    previous.type = 'button';
+    previous.setAttribute('aria-label', 'Imagem anterior');
+    previous.textContent = '‹';
+    const next = previous.cloneNode(true);
+    next.className = 'design-carousel-btn next';
+    next.setAttribute('aria-label', 'Próxima imagem');
+    next.textContent = '›';
+    counter = document.createElement('span');
+    counter.className = 'design-carousel-counter';
+    media.append(previous, next, counter);
+
+    previous.addEventListener('click', () => {
+      currentImage = (currentImage - 1 + sources.length) % sources.length;
+      renderImage();
+    });
+    next.addEventListener('click', () => {
+      currentImage = (currentImage + 1) % sources.length;
+      renderImage();
+    });
+  }
+
+  renderImage();
+});
+
+document.querySelectorAll('#criacao .criacao-thumb').forEach(thumb => {
+  const videos = [...thumb.querySelectorAll('video')];
+  if (!videos.length) return;
+
+  const carousel = document.createElement('div');
+  carousel.className = 'video-carousel';
+  const slides = videos.map((video, index) => {
+    video.classList.add('video-slide');
+    video.controls = true;
+    video.tabIndex = index === 0 ? 0 : -1;
+    if (index === 0) video.classList.add('ativo');
+    carousel.append(video);
+    return video;
+  });
+  thumb.replaceChildren(carousel);
+
+  const navigation = document.createElement('div');
+  navigation.className = 'video-carousel-nav';
+  navigation.innerHTML = '<button type="button" class="video-prev" aria-label="Vídeo anterior">‹</button><span class="video-carousel-count">1 / 1</span><button type="button" class="video-next" aria-label="Próximo vídeo">›</button>';
+  thumb.append(navigation);
+
+  let currentVideo = 0;
+
+  function showVideo(index) {
+    slides[currentVideo].pause();
+    slides[currentVideo].classList.remove('ativo');
+    slides[currentVideo].tabIndex = -1;
+    currentVideo = (index + slides.length) % slides.length;
+    const video = slides[currentVideo];
+    video.classList.add('ativo');
+    video.tabIndex = 0;
+    navigation.querySelector('.video-carousel-count').textContent = `${currentVideo + 1} / ${slides.length}`;
+  }
+  navigation.querySelector('.video-prev').addEventListener('click', () => showVideo(currentVideo - 1));
+  navigation.querySelector('.video-next').addEventListener('click', () => showVideo(currentVideo + 1));
+  slides.forEach(video => {
+    video.addEventListener('ended', () => showVideo(currentVideo + 1));
+  });
+  navigation.querySelector('.video-carousel-count').textContent = `1 / ${slides.length}`;
+});
+</script>
+</body>
+</html>
